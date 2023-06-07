@@ -461,6 +461,12 @@
   border: 1px solid #787878;
   border-radius: 6px;
 }
+.right-portion .custom-select{
+  width: calc(100% - 32px) !important;
+}
+.custom-select.small-right-portion {
+  width: calc(55% - 32px) !important;
+}
 .selected {
   display: flex;
   justify-content: space-between;

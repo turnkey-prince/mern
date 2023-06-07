@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-const BankingPreference = () => {
-    const { register, handleSubmit } = useForm();
-    const [data, setData] = useState("");
+import React from "react";
+const BankingPreference = ({ register }) => {
     return (
         <div className="section pbottom-40">
             <div className="two-parts">
@@ -20,7 +17,8 @@ const BankingPreference = () => {
                     </div>
                 </div>
             </div>
-            <form onSubmit={handleSubmit((data) => setData())} className="form">
+            <div className="form">
+
                 <div className="form-group righty">
                     <input type='text' {...register('bankName')} className="input-box input-item" placeholder='Bank Name' />
                 </div>
@@ -33,7 +31,7 @@ const BankingPreference = () => {
                 <div className="form-group righty">
                     <input type='text' {...register('bankIFSC')} className="input-box input-item" placeholder='Bank IFSC Code' />
                 </div>
-            </form>
+            </div>
         </div>
     );
 }

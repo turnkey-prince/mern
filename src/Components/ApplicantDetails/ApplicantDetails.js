@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-const ApplicantDetails = ({ handleSelect }) => {
-    const { register, handleSubmit } = useForm();
-    const [data, setData] = useState("");
+import React from "react";
+const ApplicantDetails = ({ handleSelect, register }) => {
     return (
         <div className="section applicant">
             <div className="two-parts">
@@ -13,7 +10,7 @@ const ApplicantDetails = ({ handleSelect }) => {
                     1st Account Holder Details
                 </div>
             </div>
-            <form onSubmit={handleSubmit((data) => setData())} className="form">
+            <div className="form">
                 <div className="form-group righty">
                     <input type='text' {...register('applicantName')} className="input-box input-item" placeholder='Applicant Name' />
                 </div>
@@ -110,7 +107,7 @@ const ApplicantDetails = ({ handleSelect }) => {
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     );
 }

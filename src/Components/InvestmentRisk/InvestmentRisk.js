@@ -1,14 +1,11 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-const InvestmentRisk = () => {
-    const { register, handleSubmit } = useForm();
-    const [data, setData] = useState("");
+import React from "react";
+const InvestmentRisk = ({ register, handleSelect }) => {
     return (
         <div className="section">
             <div className="section-header">
                 Investment Risk Profiler
             </div>
-            <form onSubmit={handleSubmit((data) => setData())} className="form">
+            <div className="form">
                 <div className="heading">
                     <div className="top-heading">Welcome to <span className="imp-text medium">Risk Profiler</span></div>
                     <div className="other-heading">Your Investment is utmost as important as understandind your emotional risk appetite</div>
@@ -79,17 +76,33 @@ const InvestmentRisk = () => {
                     <div className="input-label big-left-portion">
                         Investment Objective
                     </div>
-                    <select {...register('investmentObjective')} className="select-menu small-right-portion input-item" value={'0'}>
-                        <option value={'0'}>Select</option>
-                    </select>
+                    <div className="custom-select input-item small-right-portion ">
+                        <div className="selected">
+                            <input value={'Select'} type="text" readOnly className="select-input" onClick={handleSelect} />
+                            <img src={require('../../assets/chevron.svg').default} alt='' onClick={handleSelect} />
+                        </div>
+                        <ul className="select-list">
+                            <li className="select-options">1</li>
+                            <li className="select-options">2</li>
+                            <li className="select-options">3</li>
+                        </ul>
+                    </div>
                 </div>
                 <div className="form-group">
                     <div className="input-label big-left-portion">
                         Risk Tolerance
                     </div>
-                    <select {...register('investmentObjective')} className="select-menu small-right-portion input-item" value={'0'}>
-                        <option value={'0'}>Select</option>
-                    </select>
+                    <div className="custom-select input-item small-right-portion ">
+                        <div className="selected">
+                            <input value={'Select'} type="text" readOnly className="select-input" onClick={handleSelect} />
+                            <img src={require('../../assets/chevron.svg').default} alt='' onClick={handleSelect} />
+                        </div>
+                        <ul className="select-list">
+                            <li className="select-options">1</li>
+                            <li className="select-options">2</li>
+                            <li className="select-options">3</li>
+                        </ul>
+                    </div>
                 </div>
                 <div className="form-group">
                     <div className="input-label big-left-portion">
@@ -131,7 +144,7 @@ const InvestmentRisk = () => {
                     </div>
                     <button className="dark-btn">Submit</button>
                 </div>
-            </form>
+            </div>
         </div>
     );
 }

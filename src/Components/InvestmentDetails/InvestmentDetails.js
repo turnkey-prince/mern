@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import React from "react";
 import { Input, SelectMenu } from "../BasicComponents";
-const InvestmentDetails = ({ handleSelect }) => {
-    const { register, handleSubmit } = useForm();
-    const [data, setData] = useState("");
+const InvestmentDetails = ({ handleSelect, register }) => {
     const details = [
         {
             title: 'Account Type',
@@ -106,14 +103,15 @@ const InvestmentDetails = ({ handleSelect }) => {
             <div className="section-header">
                 Investment Details
             </div>
-            <form onSubmit={handleSubmit((data) => setData())} className="form">
+            <div className="form">
+
                 {details.map((item) => (
                     item.type === 'select' ?
                         <SelectMenu handleSelect={handleSelect} options={item.options} key={item.name} register={register} title={item.title} name={item.name} selected={item.selected} note={item.note} preview={item.preview} />
                         :
                         <Input type={item.type} placeholder={item.placeholder} key={item.name} register={register} title={item.title} name={item.name} note={item.note} preview={item.preview} />
                 ))}
-            </form>
+            </div>
         </div>
     );
 }
