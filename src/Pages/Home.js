@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { InvestmentDetails } from "../Components/InvestmentDetails/InvestmentDetails"
 import { ApplicantDetails } from "../Components/ApplicantDetails/ApplicantDetails"
 import { BankingPreference } from "../Components/BankingPreference/BankingPreference"
@@ -13,8 +13,16 @@ export const Home = () => {
         else
             clsList.add('openSelect');
     }
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, setValue, getValues, watch } = useForm()
     const [data, setData] = useState()
+    const fetchValue = field => watch(field)
+    const onSubmit = (data) => {
+        console.log(data)
+    }
+    const selectOption = (field, value) => {
+        setValue(field, value)
+    }
+
     return (
         <>
             <div className="top-header heading mbottom-0">
@@ -23,9 +31,9 @@ export const Home = () => {
                 <div className="mtop-20">A Financial Journey filled with capitalization of enormous wealth opportunity in an economic transition.</div>
             </div>
 
-            <form onSubmit={handleSubmit((data) => setData(data))}>
+            <form onSubmit={handleSubmit(onSubmit)}>
 
-                <InvestmentDetails handleSelect={handleSelect} register={register} /><ApplicantDetails handleSelect={handleSelect} register={register} /><BankingPreference register={register} /><NomineeDetails handleSelect={handleSelect} register={register} /><InvestmentRisk register={register} handleSelect={handleSelect} />
+                <InvestmentDetails handleSelect={handleSelect} getValues={fetchValue} register={register} selectOption={selectOption} /><ApplicantDetails handleSelect={handleSelect} getValues={fetchValue} register={register} /><BankingPreference register={register} /><NomineeDetails handleSelect={handleSelect} register={register} /><InvestmentRisk register={register} handleSelect={handleSelect} />
             </form>
         </>
     )

@@ -1,6 +1,6 @@
 import React from "react";
 import { Input, SelectMenu } from "../BasicComponents";
-const InvestmentDetails = ({ handleSelect, register }) => {
+const InvestmentDetails = ({ handleSelect, register, selectOption, getValues }) => {
     const details = [
         {
             title: 'Account Type',
@@ -9,9 +9,13 @@ const InvestmentDetails = ({ handleSelect, register }) => {
             selected: '0',
             options: [
                 {
-                    title: 'Abc',
-                    value: 'abc'
-                }
+                    title: 'Personal',
+                    value: 'personal'
+                },
+                {
+                    title: 'Savings',
+                    value: 'savings'
+                },
             ]
         },
         {
@@ -21,9 +25,17 @@ const InvestmentDetails = ({ handleSelect, register }) => {
             selected: '0',
             options: [
                 {
-                    title: 'Abc',
-                    value: 'abc'
-                }
+                    title: 'Gold Strategy',
+                    value: 'gold'
+                },
+                {
+                    title: 'Silver Strategy',
+                    value: 'silver'
+                },
+                {
+                    title: 'Systematic Transfer Plan',
+                    value: 'systematic'
+                },
             ]
         },
         {
@@ -31,12 +43,39 @@ const InvestmentDetails = ({ handleSelect, register }) => {
             name: 'fundFees',
             type: 'select',
             selected: '0',
-            options: [
-                {
-                    title: 'Abc',
-                    value: 'abc'
-                }
-            ],
+            dependent: 'portfolio',
+            options: {
+                'gold': [
+                    {
+                        value: 'cheapGold',
+                        title: 'Rs 123'
+                    },
+                    {
+                        value: 'premiumGold',
+                        title: 'Rs 1000'
+                    },
+                ],
+                'silver': [
+                    {
+                        value: 'cheapSilver',
+                        title: 'Rs 1203'
+                    },
+                    {
+                        value: 'premiumSilver',
+                        title: 'Rs 1100'
+                    },
+                ],
+                'systematic': [
+                    {
+                        value: 'cheapSystematic',
+                        title: 'Rs 103'
+                    },
+                    {
+                        value: 'premiumSystematic',
+                        title: 'Rs 1234'
+                    },
+                ],
+            },
         },
         {
             title: 'Investment Category',
@@ -76,9 +115,17 @@ const InvestmentDetails = ({ handleSelect, register }) => {
             selected: '0',
             options: [
                 {
-                    title: 'Abc',
-                    value: 'abc'
-                }
+                    title: '1',
+                    value: '1'
+                },
+                {
+                    title: '2',
+                    value: '2'
+                },
+                {
+                    title: '3',
+                    value: '3'
+                },
             ]
         },
         {
@@ -107,7 +154,7 @@ const InvestmentDetails = ({ handleSelect, register }) => {
 
                 {details.map((item) => (
                     item.type === 'select' ?
-                        <SelectMenu handleSelect={handleSelect} options={item.options} key={item.name} register={register} title={item.title} name={item.name} selected={item.selected} note={item.note} preview={item.preview} />
+                        <SelectMenu handleSelect={handleSelect} selectOption={selectOption} getValues={getValues} dependent={item.dependent} options={item.options} key={item.name} register={register} title={item.title} name={item.name} selected={item.selected} note={item.note} preview={item.preview} />
                         :
                         <Input type={item.type} placeholder={item.placeholder} key={item.name} register={register} title={item.title} name={item.name} note={item.note} preview={item.preview} />
                 ))}

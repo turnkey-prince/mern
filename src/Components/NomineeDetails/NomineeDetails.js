@@ -12,11 +12,13 @@ const NomineeDetails = ({ handleSelect, register }) => {
                             <input value={'Select Number of Nominees'} type="text" readOnly className="select-input" onClick={handleSelect} />
                             <img src={require('../../assets/chevron.svg').default} alt='' onClick={handleSelect} />
                         </div>
-                        <ul className="select-list">
-                            <li className="select-options">1</li>
-                            <li className="select-options">2</li>
-                            <li className="select-options">3</li>
-                        </ul>
+                        <div className="list-wrapper">
+                            <ul className="select-list">
+                                <li className="select-options">1</li>
+                                <li className="select-options">2</li>
+                                <li className="select-options">3</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -49,33 +51,39 @@ const NomineeDetails = ({ handleSelect, register }) => {
                                     <input value={'Day'} type="text" readOnly className="select-input" onClick={handleSelect} />
                                     <img src={require('../../assets/chevron.svg').default} alt='' onClick={handleSelect} />
                                 </div>
-                                <ul className="select-list">
-                                    <li className="select-options">1</li>
-                                    <li className="select-options">2</li>
-                                    <li className="select-options">3</li>
-                                </ul>
+                                <div className="list-wrapper">
+                                    <ul className="select-list">
+                                        <li className="select-options">1</li>
+                                        <li className="select-options">2</li>
+                                        <li className="select-options">3</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div className="custom-select w-200">
                                 <div className="selected">
                                     <input value={'Month'} type="text" readOnly className="select-input" onClick={handleSelect} />
                                     <img src={require('../../assets/chevron.svg').default} alt='' onClick={handleSelect} />
                                 </div>
-                                <ul className="select-list">
-                                    <li className="select-options">January</li>
-                                    <li className="select-options">Febuary</li>
-                                    <li className="select-options">March</li>
-                                </ul>
+                                <div className="list-wrapper">
+                                    <ul className="select-list">
+                                        <li className="select-options">January</li>
+                                        <li className="select-options">Febuary</li>
+                                        <li className="select-options">March</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div className="custom-select w-150">
                                 <div className="selected">
                                     <input value={'Year'} type="text" readOnly className="select-input" onClick={handleSelect} />
                                     <img src={require('../../assets/chevron.svg').default} alt='' onClick={handleSelect} />
                                 </div>
-                                <ul className="select-list">
-                                    <li className="select-options">1999</li>
-                                    <li className="select-options">2000</li>
-                                    <li className="select-options">2001</li>
-                                </ul>
+                                <div className="list-wrapper">
+                                    <ul className="select-list">
+                                        <li className="select-options">1999</li>
+                                        <li className="select-options">2000</li>
+                                        <li className="select-options">2001</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>

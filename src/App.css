@@ -322,8 +322,10 @@
   color: #1EA596;
   padding: 13px 10px !important;
   font-size: 22px;
+  cursor: pointer;
 }
 .dark-btn {
+  cursor: pointer;
   border-radius: 6px;
   min-width: 154px;
   text-align: center;
@@ -341,6 +343,7 @@
   font-weight: 600;
   background: transparent;
   color: #0e4059;
+  cursor: pointer;
   padding: 0.5rem 0.25rem !important;
   font-size: 22px;
 }
@@ -460,6 +463,7 @@
   background: white;
   border: 1px solid #787878;
   border-radius: 6px;
+  cursor: pointer;
 }
 .right-portion .custom-select{
   width: calc(100% - 32px) !important;
@@ -472,11 +476,11 @@
   justify-content: space-between;
 }
 .select-input {
+  cursor: pointer;
   padding: 0;
   width: calc(100% - 22px);
   border: 0;
   outline: 0;
-  cursor: pointer;
   font-size: 24px;
   background: transparent;
 }
@@ -485,16 +489,35 @@
   background: white;
   list-style: none;
   margin: 18px 0 0 -16px;
-  padding: inherit;
+  padding: 0;
   display: none;
   width: inherit;
-  border: inherit;
-  gap:20;
+  border: 1px solid #787878;
+  border-radius: 6px;
+}
+.select-options {
+  padding: 14px 20px;
+  text-align: center;
+}
+.select-options:hover{
+  background-color: #f0f0f0;
   border-radius: inherit;
+}
+.list-wrapper {
+  width: calc(100% + 16px);
+  position: relative;
 }
 .openSelect .select-list {
   display: flex;
   flex-direction: column;
+}
+.img-option {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+}
+.select-img {
+  width: 36px;
 }
 .App-header {
   background-color: #282c34;

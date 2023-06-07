@@ -81,11 +81,13 @@ const InvestmentRisk = ({ register, handleSelect }) => {
                             <input value={'Select'} type="text" readOnly className="select-input" onClick={handleSelect} />
                             <img src={require('../../assets/chevron.svg').default} alt='' onClick={handleSelect} />
                         </div>
-                        <ul className="select-list">
-                            <li className="select-options">1</li>
-                            <li className="select-options">2</li>
-                            <li className="select-options">3</li>
-                        </ul>
+                        <div className="list-wrapper">
+                            <ul className="select-list">
+                                <li className="select-options">1</li>
+                                <li className="select-options">2</li>
+                                <li className="select-options">3</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div className="form-group">
@@ -97,11 +99,13 @@ const InvestmentRisk = ({ register, handleSelect }) => {
                             <input value={'Select'} type="text" readOnly className="select-input" onClick={handleSelect} />
                             <img src={require('../../assets/chevron.svg').default} alt='' onClick={handleSelect} />
                         </div>
-                        <ul className="select-list">
-                            <li className="select-options">1</li>
-                            <li className="select-options">2</li>
-                            <li className="select-options">3</li>
-                        </ul>
+                        <div className="list-wrapper">
+                            <ul className="select-list">
+                                <li className="select-options">1</li>
+                                <li className="select-options">2</li>
+                                <li className="select-options">3</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div className="form-group">
@@ -142,7 +146,7 @@ const InvestmentRisk = ({ register, handleSelect }) => {
                             <input type='text' {...register('accountNumber')} className="input-box input-item" />
                         </div>
                     </div>
-                    <button className="dark-btn">Submit</button>
+                    <button type="submit" className="dark-btn">Submit</button>
                 </div>
             </div>
         </div>
