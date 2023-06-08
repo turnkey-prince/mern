@@ -1,6 +1,6 @@
-import React from "react";
-import { Input, SelectMenu } from "../BasicComponents";
-const InvestmentDetails = ({ handleSelect, register, selectOption, getValues }) => {
+import React, { useEffect } from "react";
+import { Input, SelectMenu, SelectMenuWithImg } from "../BasicComponents";
+const InvestmentDetails = ({ handleSelect, register, selectOption, getValues, selectedMenu }) => {
     const details = [
         {
             title: 'Account Type',
@@ -99,13 +99,19 @@ const InvestmentDetails = ({ handleSelect, register, selectOption, getValues }) 
             title: 'Country   of Tax Residency',
             name: 'country',
             type: 'select',
+            subType: 'img',
             selected: 'india',
             options: [
                 {
                     title: 'India',
                     img: 'https://img.icons8.com/?size=512&id=32584&format=png',
                     value: 'india'
-                }
+                },
+                {
+                    title: 'United States of America',
+                    img: 'https://img.icons8.com/?size=512&id=15532&format=png',
+                    value: 'usa'
+                },
             ]
         },
         {
@@ -137,6 +143,7 @@ const InvestmentDetails = ({ handleSelect, register, selectOption, getValues }) 
             title: 'Investment Mode',
             name: 'investmentMode',
             type: 'select',
+            selected: '0',
             options: [
                 {
                     title: 'Abc',
@@ -145,6 +152,14 @@ const InvestmentDetails = ({ handleSelect, register, selectOption, getValues }) 
             ]
         },
     ]
+    useEffect(() => {
+        details.forEach((item) => {
+            if (item.type === 'select' && item.selected !== '0') {
+                selectOption(item.name, item.selected)
+            }
+        })
+    }, [])
+
     return (
         <div className="section investment">
             <div className="section-header">
@@ -154,7 +169,10 @@ const InvestmentDetails = ({ handleSelect, register, selectOption, getValues }) 
 
                 {details.map((item) => (
                     item.type === 'select' ?
-                        <SelectMenu handleSelect={handleSelect} selectOption={selectOption} getValues={getValues} dependent={item.dependent} options={item.options} key={item.name} register={register} title={item.title} name={item.name} selected={item.selected} note={item.note} preview={item.preview} />
+                        item.subType === 'img' ?
+                            <SelectMenuWithImg selectedMenu={selectedMenu} handleSelect={handleSelect} selectOption={selectOption} getValues={getValues} dependent={item.dependent} options={item.options} key={item.name} title={item.title} name={item.name} selected={item.selected} note={item.note} preview={item.preview} />
+                            :
+                            <SelectMenu selectedMenu={selectedMenu} handleSelect={handleSelect} selectOption={selectOption} getValues={getValues} dependent={item.dependent} options={item.options} key={item.name} title={item.title} name={item.name} selected={item.selected} note={item.note} preview={item.preview} />
                         :
                         <Input type={item.type} placeholder={item.placeholder} key={item.name} register={register} title={item.title} name={item.name} note={item.note} preview={item.preview} />
                 ))}

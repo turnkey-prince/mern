@@ -1,5 +1,6 @@
 import React from "react";
-const InvestmentRisk = ({ register, handleSelect }) => {
+import { SingleSelectMenu } from "../BasicComponents";
+const InvestmentRisk = ({ register, handleSelect, selectedMenu, selectOption, getValues }) => {
     return (
         <div className="section">
             <div className="section-header">
@@ -17,19 +18,19 @@ const InvestmentRisk = ({ register, handleSelect }) => {
 
                     <div className="header-choices small-right-portion">
                         <div className="radio-opt">
-                            <input type="radio" id="03" />
+                            <input type="radio"  {...register('investmentExperience')} id="03" checked />
                             <label htmlFor="03">0-3 yr</label>
                         </div>
                         <div className="radio-opt">
-                            <input type="radio" id="35" />
+                            <input type="radio"  {...register('investmentExperience')} id="35" />
                             <label htmlFor="35">3-5 yr</label>
                         </div>
                         <div className="radio-opt">
-                            <input type="radio" id="57" />
+                            <input type="radio"  {...register('investmentExperience')} id="57" />
                             <label htmlFor="57">5-7 yr</label>
                         </div>
                         <div className="radio-opt">
-                            <input type="radio" id="7" />
+                            <input type="radio"  {...register('investmentExperience')} id="7" />
                             <label htmlFor="7"> {'>'}7 yr</label>
                         </div>
                     </div>
@@ -40,11 +41,11 @@ const InvestmentRisk = ({ register, handleSelect }) => {
                     </div>
                     <div className="header-choices small-right-portion">
                         <div className="radio-opt">
-                            <input type="radio" id="active" />
+                            <input type="radio"  {...register('investmentStyle')} id="active" checked />
                             <label htmlFor="active">Active</label>
                         </div>
                         <div className="radio-opt">
-                            <input type="radio" id="passive" />
+                            <input type="radio"  {...register('investmentStyle')} id="passive" />
                             <label htmlFor="passive">Passive</label>
                         </div>
                     </div>
@@ -55,19 +56,19 @@ const InvestmentRisk = ({ register, handleSelect }) => {
                     </div>
                     <div className="header-choices small-right-portion">
                         <div className="radio-opt">
-                            <input type="radio" id="accumulate" />
+                            <input type="radio"  {...register('investmentDiversify')} id="accumulate" checked />
                             <label htmlFor="accumulate">Accumulate</label>
                         </div>
                         <div className="radio-opt">
-                            <input type="radio" id="hold" />
+                            <input type="radio"  {...register('investmentDiversify')} id="hold" />
                             <label htmlFor="hold">Hold</label>
                         </div>
                         <div className="radio-opt">
-                            <input type="radio" id="reduce" />
+                            <input type="radio"  {...register('investmentDiversify')} id="reduce" />
                             <label htmlFor="reduce">Reduce</label>
                         </div>
                         <div className="radio-opt">
-                            <input type="radio" id="exit" />
+                            <input type="radio"  {...register('investmentDiversify')} id="exit" />
                             <label htmlFor="exit">Exit</label>
                         </div>
                     </div>
@@ -76,37 +77,14 @@ const InvestmentRisk = ({ register, handleSelect }) => {
                     <div className="input-label big-left-portion">
                         Investment Objective
                     </div>
-                    <div className="custom-select input-item small-right-portion ">
-                        <div className="selected">
-                            <input value={'Select'} type="text" readOnly className="select-input" onClick={handleSelect} />
-                            <img src={require('../../assets/chevron.svg').default} alt='' onClick={handleSelect} />
-                        </div>
-                        <div className="list-wrapper">
-                            <ul className="select-list">
-                                <li className="select-options">1</li>
-                                <li className="select-options">2</li>
-                                <li className="select-options">3</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <SingleSelectMenu selectedMenu={selectedMenu} handleSelect={handleSelect} selectOption={selectOption} getValues={getValues} options={[{ title: '1', value: '1' }, { title: '2', value: '2' }, { title: '3', value: '3' },]} name={`investmentObjective`} selected={'0'} extraClass={'small-right-portion '} />
                 </div>
                 <div className="form-group">
                     <div className="input-label big-left-portion">
                         Risk Tolerance
                     </div>
-                    <div className="custom-select input-item small-right-portion ">
-                        <div className="selected">
-                            <input value={'Select'} type="text" readOnly className="select-input" onClick={handleSelect} />
-                            <img src={require('../../assets/chevron.svg').default} alt='' onClick={handleSelect} />
-                        </div>
-                        <div className="list-wrapper">
-                            <ul className="select-list">
-                                <li className="select-options">1</li>
-                                <li className="select-options">2</li>
-                                <li className="select-options">3</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <SingleSelectMenu selectedMenu={selectedMenu} handleSelect={handleSelect} selectOption={selectOption} getValues={getValues} options={[{ title: '1', value: '1' }, { title: '2', value: '2' }, { title: '3', value: '3' },]} name={`riskTolerance`} selected={'0'} extraClass={'small-right-portion '} />
+
                 </div>
                 <div className="form-group">
                     <div className="input-label big-left-portion">
@@ -114,20 +92,20 @@ const InvestmentRisk = ({ register, handleSelect }) => {
                     </div>
                     <div className="header-choices small-right-portion">
                         <div className="radio-opt">
-                            <input type="radio" id="03" />
-                            <label htmlFor="03">{'<'}3 yr</label>
+                            <input type="radio"  {...register('invesmentHorizon')} id="03h" checked />
+                            <label htmlFor="03h">{'<'}3 yr</label>
                         </div>
                         <div className="radio-opt">
-                            <input type="radio" id="35" />
-                            <label htmlFor="35">3-5 yr</label>
+                            <input type="radio"  {...register('invesmentHorizon')} id="35h" />
+                            <label htmlFor="35h">3-5 yr</label>
                         </div>
                         <div className="radio-opt">
-                            <input type="radio" id="57" />
-                            <label htmlFor="57">5-7 yr</label>
+                            <input type="radio"  {...register('invesmentHorizon')} id="57h" />
+                            <label htmlFor="57h">5-7 yr</label>
                         </div>
                         <div className="radio-opt">
-                            <input type="radio" id="7" />
-                            <label htmlFor="10"> {'>'}10 yr</label>
+                            <input type="radio"  {...register('invesmentHorizon')} id="10h" />
+                            <label htmlFor="10h"> {'>'}10 yr</label>
                         </div>
                     </div>
                 </div>
@@ -143,7 +121,7 @@ const InvestmentRisk = ({ register, handleSelect }) => {
                             Enter Captcha
                         </div>
                         <div className="form-group">
-                            <input type='text' {...register('accountNumber')} className="input-box input-item" />
+                            <input required type='text' {...register('captcha')} className="input-box input-item" />
                         </div>
                     </div>
                     <button type="submit" className="dark-btn">Submit</button>

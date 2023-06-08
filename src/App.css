@@ -374,10 +374,43 @@
   font-size: 24px;
   font-weight: 600;
 }
-.radio-option input {
-  width: 18px;
+input[type="radio"]{
+  width: 20px;
   height: 18px;
   margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 50%;
+  border: 2px solid #787878;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+input[type="radio"]::before{
+  content:"";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #1EA596;
+  visibility: hidden;
+}
+input[type="radio"]:checked::before{
+  visibility: visible;
+}
+input[type="radio"]:checked{
+  border: 2px solid #1EA596 !important;
+}
+input[type="radio"]:checked + label{
+  color: #1EA596;
+}
+input[type="radio"] + label{
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
 }
 .sub-header {
   padding: 12px 13px;
@@ -402,7 +435,7 @@
   align-items: center;
 }
 .radio-opt input{
-  width: 18px;
+  width: 24px;
   height: 18px;
 }
 .radio-opt label{
@@ -494,10 +527,11 @@
   width: inherit;
   border: 1px solid #787878;
   border-radius: 6px;
+  overflow-y: scroll;
+  max-height: 450px
 }
 .select-options {
   padding: 14px 20px;
-  text-align: center;
 }
 .select-options:hover{
   background-color: #f0f0f0;
@@ -518,6 +552,9 @@
 }
 .select-img {
   width: 36px;
+}
+.select-input.img-option {
+  margin-block: -3.5px;
 }
 .App-header {
   background-color: #282c34;

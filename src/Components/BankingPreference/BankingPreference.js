@@ -8,11 +8,11 @@ const BankingPreference = ({ register }) => {
                 </div>
                 <div className="header-choices">
                     <div className="radio-option">
-                        <input type="radio" id="cancel" />
+                        <input type="radio" id="cancel" {...register('bankingPreference')} />
                         <label htmlFor="cancel">Cancelled Cheque</label>
                     </div>
-                    <div className="radio-option selected-radio-option">
-                        <input type="radio" id="bank" />
+                    <div className="radio-option">
+                        <input type="radio" id="bank" {...register('bankingPreference')} checked />
                         <label htmlFor="bank">Bank Details</label>
                     </div>
                 </div>
@@ -20,16 +20,16 @@ const BankingPreference = ({ register }) => {
             <div className="form">
 
                 <div className="form-group righty">
-                    <input type='text' {...register('bankName')} className="input-box input-item" placeholder='Bank Name' />
+                    <input required type='text' {...register('bankName')} className="input-box input-item" placeholder='Bank Name' />
                 </div>
                 <div className="form-group righty">
-                    <input type='text' {...register('accountNumber')} className="input-box input-item" placeholder='Account No.' />
+                    <input required type='number' {...register('accountNumber')} className="input-box input-item" placeholder='Account No.' />
                 </div>
                 <div className="form-group righty">
-                    <input type='text' {...register('accountTitle')} className="input-box input-item" placeholder='Account Title' />
+                    <input required type='text' {...register('accountTitle')} className="input-box input-item" placeholder='Account Title' />
                 </div>
                 <div className="form-group righty">
-                    <input type='text' {...register('bankIFSC')} className="input-box input-item" placeholder='Bank IFSC Code' />
+                    <input required type='text' {...register('bankIFSC')} className="input-box input-item" placeholder='Bank IFSC Code' />
                 </div>
             </div>
         </div>
