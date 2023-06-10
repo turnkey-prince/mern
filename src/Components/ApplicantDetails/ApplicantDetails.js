@@ -1,5 +1,6 @@
 import React from "react";
 import { SingleSelectMenu } from "../BasicComponents";
+import { uploadToS3 } from "../../api/UploadImage";
 const ApplicantDetails = ({ handleSelect, register, getValues, selectedMenu, getFileName, selectOption }) => {
     const sendOTP = (e) => {
         e.preventDefault()
@@ -10,8 +11,13 @@ const ApplicantDetails = ({ handleSelect, register, getValues, selectedMenu, get
     const verifyOTP = (e) => {
         e.preventDefault()
     }
-    const uploadFile = (e) => {
+    const uploadFile = async (e, field) => {
         e.preventDefault()
+        const file = document.querySelector(`input[name="${field}"]`).files[0]
+        const fileName = file.name;
+        const url = await uploadToS3(file, fileName)
+        selectOption(`${field}Url`, url)
+        console.log(url)
     }
     const applicants = [];
     for (let i = 1; i < parseInt(getValues('accHolders')); i++) {
@@ -74,9 +80,9 @@ const ApplicantDetails = ({ handleSelect, register, getValues, selectedMenu, get
                     <div className="right-group">
                         <div className="input-text">Upload scanned copy of PAN Card</div>
                         <div className="btn-grp">
-                            <input hidden type="file" {...register(`applicant${i + 1}PanCard`)} id={`applicant${i + 1}PanCard`} />
+                            <input hidden type="file" name={`applicant${i + 1}PanCard`} {...register(`applicant${i + 1}PanCard`)} id={`applicant${i + 1}PanCard`} />
                             <label className="light-btn" htmlFor={`applicant${i + 1}PanCard`}>{getValues(`applicant${i + 1}PanCard`)?.length ? getFileName(`applicant${i + 1}PanCard`) : 'Choose File'}</label>
-                            <button className="dark-btn" onClick={uploadFile}>Upload</button>
+                            <button className="dark-btn" onClick={(e) => uploadFile(e, `applicant${i + 1}PanCard`)}>Upload</button>
                         </div>
                     </div>
                 </div>
@@ -84,9 +90,9 @@ const ApplicantDetails = ({ handleSelect, register, getValues, selectedMenu, get
                     <div className="right-group">
                         <div className="input-text">Upload scanned copy of Aadhar Card</div>
                         <div className="btn-grp">
-                            <input hidden type="file" {...register(`applicant${i + 1}AadharCard`)} id={`applicant${i + 1}AadharCard`} />
+                            <input hidden type="file" name={`applicant${i + 1}AadharCard`} {...register(`applicant${i + 1}AadharCard`)} id={`applicant${i + 1}AadharCard`} />
                             <label className="light-btn" htmlFor={`applicant${i + 1}AadharCard`}>{getValues(`applicant${i + 1}AadharCard`)?.length ? getFileName(`applicant${i + 1}AadharCard`) : 'Choose File'}</label>
-                            <button className="dark-btn" onClick={uploadFile}>Upload</button>
+                            <button className="dark-btn" onClick={(e) => uploadFile(e, `applicant${i + 1}AadharCard`)}>Upload</button>
                         </div>
                     </div>
                 </div>
@@ -158,9 +164,9 @@ const ApplicantDetails = ({ handleSelect, register, getValues, selectedMenu, get
                     <div className="right-group">
                         <div className="input-text">Upload scanned copy of PAN Card</div>
                         <div className="btn-grp">
-                            <input hidden type="file" {...register('applicantPanCard')} id="applicantPanCard" />
+                            <input hidden type="file" name={`applicantPanCard`} {...register('applicantPanCard')} id="applicantPanCard" />
                             <label className="light-btn" htmlFor="applicantPanCard">{getValues('applicantPanCard')?.length ? getFileName('applicantPanCard') : 'Choose File'}</label>
-                            <button className="dark-btn" onClick={uploadFile}>Upload</button>
+                            <button className="dark-btn" onClick={(e) => uploadFile(e, `applicantPanCard`)}>Upload</button>
                         </div>
                     </div>
                 </div>
@@ -168,9 +174,9 @@ const ApplicantDetails = ({ handleSelect, register, getValues, selectedMenu, get
                     <div className="right-group">
                         <div className="input-text">Upload scanned copy of Aadhar Card</div>
                         <div className="btn-grp">
-                            <input hidden type="file" {...register('applicantAadharCard')} id="applicantAadharCard" />
+                            <input hidden type="file" name={`applicantAadharCard`} {...register('applicantAadharCard')} id="applicantAadharCard" />
                             <label className="light-btn" htmlFor="applicantAadharCard">{getValues('applicantAadharCard')?.length ? getFileName('applicantAadharCard') : 'Choose File'}</label>
-                            <button className="dark-btn" onClick={uploadFile}>Upload</button>
+                            <button className="dark-btn" onClick={(e) => uploadFile(e, `applicantAadharCard`)}>Upload</button>
                         </div>
                     </div>
                 </div>
